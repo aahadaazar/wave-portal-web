@@ -48,7 +48,7 @@ function App() {
           </Col>
           <Col
             className={'right-container'}
-            md={4}>md-4</Col>
+            md={4}>{'No Waves 😿'}</Col>
         </Row>
       </Container>
     </div>
