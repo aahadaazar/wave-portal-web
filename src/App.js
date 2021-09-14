@@ -63,6 +63,7 @@ function App() {
         text: 'Get Metamask!',
         variant: 'warning'
       })
+      setLoadingState(false);
       return;
     }
 
@@ -73,6 +74,7 @@ function App() {
           text: `Connected with ${accounts[0]}`,
           variant: 'warning'
         })
+        setLoadingState(false);
         setCurrentAcc(accounts[0])
       })
       .catch(err => console.log(err))
@@ -83,7 +85,7 @@ function App() {
     let LoveArray = await wavePortalContract._getLoveArray();
 
 
-    const waveTxn = await wavePortalContract._showLove(message, rating);
+    const waveTxn = await wavePortalContract._showLove(message, rating, { gasLimit: 300000 });
     console.log("Mining...", waveTxn.hash);
     await waveTxn.wait();
     console.log("Mined!...", waveTxn.hash);
@@ -132,17 +134,12 @@ function App() {
     } else if (ratingRef.current.value === '0') {
       return;
     }
-    const tempMsg = [...msgArray];
-    tempMsg.push({
-      message: msgRef.current.value,
-      rating: ratingRef.current.value,
-    });
     // setMsgArray(tempMsg);
     sendLove(msgRef.current.value, ratingRef.current.value);
     // console.log(tempMsg);
   }
 
-  const calcDate = date=>{
+  const calcDate = date => {
     return Date(date);
   }
 
@@ -239,7 +236,7 @@ function App() {
               </div>
               : msgArray && msgArray < 1
                 ? <h5>{'No Love Found 😿'}</h5>
-                : msgArray.map((o, index) => {
+                : msgArray && msgArray.map((o, index) => {
                   return (
                     <div key={`${o.message.substring(2)}-${index}`} className="card love-card" style={{
                       width: 'inherit',
