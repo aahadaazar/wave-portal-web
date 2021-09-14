@@ -1,7 +1,16 @@
 .App{
   background-color: #c6c6c6;
-  height:100vh;
   padding:10px;
+}
+
+.account-details{
+  background: black;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    height: 44px;
+    width: 300px;
+  margin-bottom: 20px;
 }
 
 .left-container{
@@ -10,6 +19,7 @@
   text-align: center;
   align-items: center;
   margin-top:20px;
+  min-height: 666px;
 }
 
 .left-container> h1 ,h3{
@@ -17,6 +27,7 @@
 }
 .form-control{
   max-width: 450px;
+  margin-bottom: 10px;
 }
 
 .form-control:focus{
@@ -25,7 +36,7 @@
 }
 
 .send-button{
-  margin-top: 20px;
+  margin-top: 10px;
   background-color: orange;
   color:white;
   border: none !important;
@@ -50,6 +61,11 @@
 
 .right-container{
   margin-top:20px;
+  max-height: 600px;
+  overflow-y: auto;
+  display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .wave-counter{
@@ -57,4 +73,13 @@
     border-radius: 10px;
     padding: 10px;
     margin-top: 10px;
+}
+
+.love-card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+.love-card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
